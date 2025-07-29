@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Fragment, MessageRole, MessageType } from "@/generated/prisma";
+import { cn } from "@/lib/utils";
 
 interface MessageCardProps {
   content: string;
@@ -30,8 +31,22 @@ interface AssistantMessageProps {
   type: MessageType;
 }
 
-function AssistantMessage({}: AssistantMessageProps) {
-  return <div></div>;
+function AssistantMessage({
+  content,
+  fragment,
+  createdAt,
+  isActiveFragment,
+  onFragmentClick,
+  type,
+}: AssistantMessageProps) {
+  return (
+    <div
+      className={cn(
+        "flex flex-col group px-2 pb-4",
+        type === "ERROR" && "text-red-700 dark:text-red-500",
+      )}
+    ></div>
+  );
 }
 
 export function MessageCard({
