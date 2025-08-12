@@ -14,7 +14,7 @@ export function MessagesContainer({
   setActiveFragment,
 }: {
   projectId: string;
-  activeFragment: Fragment;
+  activeFragment: Fragment | null;
   setActiveFragment: (fragment: Fragment | null) => void;
 }) {
   const trpc = useTRPC();

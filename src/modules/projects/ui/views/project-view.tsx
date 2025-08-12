@@ -35,7 +35,7 @@ export function ProjectView({ projectId }: { projectId: string }) {
         </ResizablePanel>
         <ResizableHandle withHandle />
         <ResizablePanel defaultSize={65} minSize={50}>
-          {Boolean(activeFragment) && <FragmentWeb data={activeFragment} />}
+          {!!activeFragment && <FragmentWeb data={activeFragment} />}
         </ResizablePanel>
       </ResizablePanelGroup>
     </div>
