@@ -11,11 +11,9 @@ import { Fragment } from "@/generated/prisma";
 import { ProjectHeader } from "../components/project-header";
 import { FragmentWeb } from "../components/fragment-web";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CodeIcon, CrownIcon, EyeIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { CodeView } from "@/components/code-view";
+import { CodeIcon, EyeIcon } from "lucide-react";
 import { FileExplorer } from "@/components/file-explorer";
+import { UserControl } from "@/components/user-control";
 
 export function ProjectView({ projectId }: { projectId: string }) {
   const [activeFragment, setActiveFragment] = useState<Fragment | null>(null);
@@ -58,12 +56,9 @@ export function ProjectView({ projectId }: { projectId: string }) {
                   <span>Code</span>
                 </TabsTrigger>
               </TabsList>
+
               <div className="ml-auto flex items-center gap-x-2">
-                {/* <Button asChild size="sm" variant="default"> */}
-                {/*   <Link href="/pricing"> */}
-                {/*     <CrownIcon /> Request Full Access */}
-                {/*   </Link> */}
-                {/* </Button> */}
+                <UserControl />
               </div>
             </div>
             <TabsContent value="preview">

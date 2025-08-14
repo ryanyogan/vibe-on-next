@@ -14,6 +14,7 @@ import { ArrowUpIcon, Loader2Icon } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { PROJECT_TEMPLATES } from "../../ constants";
+import { useClerk } from "@clerk/nextjs";
 
 const formSchema = z.object({
   value: z.string().min(1).max(10_000),
@@ -24,6 +25,7 @@ export function ProjectForm() {
   const trpc = useTRPC();
   const [isFocused, setIsFocused] = useState(false);
   const queryClient = useQueryClient();
+  const clerk = useClerk();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -43,6 +45,10 @@ export function ProjectForm() {
       },
       onError: (error) => {
         toast.error(error.message);
+
+        if (error?.data?.code === "UNAUTHORIZED") {
+          clerk.openSignIn();
+        }
       },
     }),
   );

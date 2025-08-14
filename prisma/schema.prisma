@@ -49,6 +49,7 @@ model Project {
   id   String @id @default(uuid())
   name String
 
+  userId   String
   messages Message[]
 
   createdAt DateTime @default(now())
