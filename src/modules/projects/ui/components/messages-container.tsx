@@ -27,7 +27,7 @@ export function MessagesContainer({
         projectId,
       },
       {
-        refetchInterval: 5_000, // TODO: Temporary live message update brute force
+        refetchInterval: 2_000, // TODO: Temporary live message update, maybe stream
       },
     ),
   );

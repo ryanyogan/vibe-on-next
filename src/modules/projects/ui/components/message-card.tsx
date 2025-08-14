@@ -3,6 +3,7 @@ import { Fragment, MessageRole, MessageType } from "@/generated/prisma";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { ChevronRightIcon, Code2Icon } from "lucide-react";
+import Image from "next/image";
 
 interface MessageCardProps {
   content: string;
@@ -83,8 +84,14 @@ function AssistantMessage({
       )}
     >
       <div className="flex items-center gap-2 pl-2 mb-2">
-        {/* <Image src="/logo.svg" alt="" height={18} width={18} className="shrink-0" /> */}
-        <span className="text-sm font-semibold">Avant</span>
+        <Image
+          src="/logo.svg"
+          alt=""
+          height={18}
+          width={18}
+          className="shrink-0"
+        />
+        <span className="text-sm font-semibold">Avant Ai</span>
         <span className="text-xs text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100">
           {format(createdAt, "HH:mm 'on' MMM dd, yyyy")}
         </span>

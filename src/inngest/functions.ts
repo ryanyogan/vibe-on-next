@@ -26,6 +26,7 @@ export const codeAgentFunction = inngest.createFunction(
   async ({ event, step }) => {
     const sanboxId = await step.run("get-sandbox-id", async () => {
       const sandbox = await Sandbox.create("nextjs-ryogan");
+      await sandbox.setTimeout(60_000 * 10 * 3);
       return sandbox.sandboxId;
     });
 
@@ -41,6 +42,7 @@ export const codeAgentFunction = inngest.createFunction(
           orderBy: {
             createdAt: "desc",
           },
+          take: 5,
         });
 
         // This basically coherces the types for us, remove it if performance becomes an issue
@@ -52,7 +54,7 @@ export const codeAgentFunction = inngest.createFunction(
           });
         }
 
-        return formattedMessages;
+        return formattedMessages.reverse();
       },
     );
 
