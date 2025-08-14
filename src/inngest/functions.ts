@@ -4,7 +4,7 @@ import {
   createTool,
   createNetwork,
   type Tool,
-  anthropic,
+  openai,
 } from "@inngest/agent-kit";
 
 import { Sandbox } from "@e2b/code-interpreter";
@@ -31,11 +31,10 @@ export const codeAgentFunction = inngest.createFunction(
       name: "code-agent",
       system: PROMPT,
       description: "An expert coding agent",
-      model: anthropic({
-        model: "claude-sonnet-4-20250514",
+      model: openai({
+        model: "gpt-4.1",
         defaultParameters: {
-          temperature: 0.5,
-          max_tokens: 10_000,
+          temperature: 0.1,
         },
       }),
       tools: [
